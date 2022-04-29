@@ -1,2 +1,2 @@
 # LeetCoding
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+Learning DSA with Leetcode <b>#LearnByDoing</b>
