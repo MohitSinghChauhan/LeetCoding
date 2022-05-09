@@ -3,34 +3,21 @@ class Solution
 public:
     void sortColors(vector<int> &nums)
     {
-        int cnt0 = 0, cnt1 = 0, cnt2 = 0;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            if (nums[i] == 0)
-                cnt0++;
-            else if (nums[i] == 1)
-                cnt1++;
-            else
-                cnt2++;
-        }
-        for (int i = 0; i < nums.size(); i++)
-        {
-            if (cnt0)
-            {
-                nums[i] = 0;
-                cnt0--;
-                continue;
+        int n = nums.size();
+        int low=0, mid=0, hi=n-1;
+        
+        while(mid<=hi){
+            if(nums[mid]==0){
+                swap(nums[mid],nums[low]);
+                mid++;
+                low++;
             }
-            else if (cnt1)
-            {
-                nums[i] = 1;
-                cnt1--;
-                continue;
+            else if(nums[mid]==1){
+                mid++;
             }
             else{
-                nums[i] = 2;
-                cnt2--;
-                continue;
+                swap(nums[mid],nums[hi]);
+                hi--;
             }
         }
     }
