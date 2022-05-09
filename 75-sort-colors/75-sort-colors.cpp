@@ -8,16 +8,13 @@ public:
         
         while(mid<=hi){
             if(nums[mid]==0){
-                swap(nums[mid],nums[low]);
-                mid++;
-                low++;
+                swap(nums[mid++],nums[low++]);
             }
             else if(nums[mid]==1){
                 mid++;
             }
             else{
-                swap(nums[mid],nums[hi]);
-                hi--;
+                swap(nums[mid],nums[hi--]);
             }
         }
     }
