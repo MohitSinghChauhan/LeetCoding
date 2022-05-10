@@ -17,9 +17,13 @@ public:
 	        if(height[lo]<height[hi]){
 	            lo++;
 	        }
+	        else if(height[lo]>height[hi]){
+                hi--;
+            }
 	        else{
-	            hi--;
-	        }
+                lo++;
+                hi--;
+            }
 	    }
 	    
 	    return max;
