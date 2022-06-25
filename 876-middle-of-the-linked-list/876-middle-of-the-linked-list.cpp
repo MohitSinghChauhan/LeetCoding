@@ -10,14 +10,20 @@
  */
 class Solution {
 public:
+    //Basic Approach
     ListNode* middleNode(ListNode* head) {
-        ListNode* slow = head; 
-        ListNode* fast = head;
-        while(fast!=NULL && fast->next!=NULL){
-            slow=slow->next;
-            fast=fast->next->next;
+       int n=0;
+       ListNode* temp = head;
+       while(temp!=NULL){
+            n++;
+            temp=temp->next;
+       }
+       int half=n/2;
+        temp=head;
+        while(half--){
+            temp=temp->next;
         }
-        return slow;
+        return temp;
     }
 };
 
