@@ -15,12 +15,8 @@ public:
         ListNode* temp = head;
         
         while(temp!=NULL){
-            if(temp==head)
-            sum=head->val;
-            else{
-                sum*=2;
-                sum+=temp->val;
-            }
+            sum*=2;
+            sum+=temp->val;
             temp=temp->next;
         }
         return sum;
