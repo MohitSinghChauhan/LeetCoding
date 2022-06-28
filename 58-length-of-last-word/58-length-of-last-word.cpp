@@ -1,17 +1,23 @@
-class Solution
-{
+class Solution {
 public:
-    int lengthOfLastWord(string s)
-    {
+    int lengthOfLastWord(string s) {
         string lastWord;
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (s[i] == ' ' and s[i + 1] != ' ' and i + 1 < s.size())
-                lastWord.clear();
+        bool check=false;
+        for(int i=s.size()-1; i>=0; i--){
+           if(s[i]==' '){
+              
+               if(check) break;
+           }
+              
+            
+           else if(s[i]!=' '){
+               lastWord.push_back(s[i]);
+               check=true;
 
-            else if (s[i] != ' ')
-                lastWord.push_back(s[i]);
+           }
+            
         }
         return lastWord.size();
+        
     }
 };
