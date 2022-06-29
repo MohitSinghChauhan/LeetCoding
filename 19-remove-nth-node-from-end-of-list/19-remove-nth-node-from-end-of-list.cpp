@@ -20,15 +20,12 @@ public:
         int index = cnt-n;
         temp=head;
         if(index==0) head=head->next;
-        int m=1;
-        
         while(temp!=NULL){
-            if(index==m){
+            if((index--)==1){ //index is 1 based.
                 temp->next=temp->next->next;
                 return head;
             }
             temp=temp->next;
-            m++;
         }
         
         
