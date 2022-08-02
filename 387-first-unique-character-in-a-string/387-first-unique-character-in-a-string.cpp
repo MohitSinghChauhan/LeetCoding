@@ -2,12 +2,12 @@ class Solution {
 public:
     int firstUniqChar(string s) {
         int n = s.size();
-        unordered_map<char,int> map;
+        vector<int> a(26,0);
         
-        for(char &i : s) map[i]++;
+        for(auto i : s) a[i-'a']++;
         
         for(int i=0; i<n; i++)
-            if(map[s[i]]==1)
+            if(a[s[i]-'a']==1)
             return i;
         
         
