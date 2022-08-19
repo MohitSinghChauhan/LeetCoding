@@ -5,14 +5,11 @@ public:
         int n = prices.size();
     
         int mx = 0, mi=INT_MAX, profit=0;
-        for(int i=0; i<n; i++){
-            
+        for(int i=0; i<n; i++){  
             mi=min(mi,prices[i]);
             profit=prices[i]-mi;
-            mx=max(mx,profit);
-            
+            mx=max(mx,profit);        
         }
-        if(mx<=0) return 0;
         return mx;
         
     }
