@@ -4,18 +4,16 @@ public:
         
         int n = prices.size();
     
-        int max = 0, min=INT_MAX;
+        int mx = 0, mi=INT_MAX, profit=0;
         for(int i=0; i<n; i++){
-            if(prices[i]<min){
-                min=prices[i];
-                continue;
-            }
-            if(prices[i]-min>max){
-                max=prices[i]-min;
-            }
+            
+            mi=min(mi,prices[i]);
+            profit=prices[i]-mi;
+            mx=max(mx,profit);
+            
         }
-        if(max<=0) return 0;
-        return max;
+        if(mx<=0) return 0;
+        return mx;
         
     }
 };
