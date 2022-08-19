@@ -8,6 +8,7 @@ public:
         for(int i=0; i<n; i++){
             if(prices[i]<min){
                 min=prices[i];
+                continue;
             }
             if(prices[i]-min>max){
                 max=prices[i]-min;
