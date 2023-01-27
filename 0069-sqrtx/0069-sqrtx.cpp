@@ -4,8 +4,8 @@ public:
         int lo=1, hi=x;
         long long ans;
         while(lo<=hi){
-            long long mid = (hi-lo)/2+lo;
-            if(mid*mid<=x){
+          int  mid = (hi-lo)/2+lo;
+            if(mid<=x/mid){
                 ans=mid;
                 lo=mid+1;
             }else{
