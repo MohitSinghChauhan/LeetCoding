@@ -1,6 +1,13 @@
 class Solution {
 public:
     int specialArray(vector<int>& nums) {
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
         sort(nums.begin(), nums.end());
         int n = nums.size();
         for (int i = 0; i <= n; ++i) {
@@ -12,4 +19,11 @@ public:
         }
         return -1;
     }
+            // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+        // Done By ChatGPT
+
 };
