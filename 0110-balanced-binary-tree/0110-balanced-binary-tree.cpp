@@ -13,13 +13,17 @@ class Solution {
 public:
 
 
-    int heightOfTree(TreeNode* root){
+    int heightOfTree(TreeNode* root, bool& isBalancedBT){
         
         if(root==NULL) return 0;
         int h=0, lh=0, rh=0;
 
-        lh = heightOfTree(root->left);
-        rh = heightOfTree(root->right);
+        lh = heightOfTree(root->left, isBalancedBT);
+        rh = heightOfTree(root->right, isBalancedBT);
+
+        if(abs(lh-rh)>1){
+            isBalancedBT=false;
+        }
 
         h = max(lh,rh) +1;
         return h;
@@ -31,11 +35,10 @@ public:
             return true;
         }
 
-        if(abs(heightOfTree(root->left)-heightOfTree(root->right))<=1 && isBalanced(root->left) && isBalanced(root->right)){
-            return true;
-        }
+        bool isBalancedBT=true;
+        heightOfTree(root,isBalancedBT);
 
-        return false;
+        return isBalancedBT;
     }
 };
 
