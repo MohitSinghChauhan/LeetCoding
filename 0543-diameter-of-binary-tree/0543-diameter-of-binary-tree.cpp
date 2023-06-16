@@ -14,24 +14,28 @@
 class Solution {
 public:
 
-   int maxHeightOfSubtrees( TreeNode* root, int& maxDiameter){
+   int heightOfTree( TreeNode* root){
         if(root==NULL){
             return 0;
         }
-        int heightOfLeftSubtree = maxHeightOfSubtrees(root->left,maxDiameter);
-        int heightOfRightSubtree = maxHeightOfSubtrees(root->right,maxDiameter);
-
-        if((heightOfLeftSubtree+heightOfRightSubtree)>maxDiameter){
-            maxDiameter = heightOfLeftSubtree + heightOfRightSubtree;
-        }
+        int heightOfLeftSubtree = heightOfTree(root->left);
+        int heightOfRightSubtree = heightOfTree(root->right);
         return(max(heightOfLeftSubtree,heightOfRightSubtree)+1);
     }
      
 
     int diameterOfBinaryTree(TreeNode* root) {
 
-        int maxDiameter = 0;
-        int data = maxHeightOfSubtrees(root,maxDiameter);
+        if(root==NULL){
+            return 0;
+        }
+
+        int leftSubtreeDiameter = diameterOfBinaryTree(root->left);
+        int rightSubtreeDiameter = diameterOfBinaryTree(root->right);
+
+        int maxDiameter = heightOfTree(root->left) + heightOfTree(root->right);
+        maxDiameter = max(maxDiameter, max(leftSubtreeDiameter,rightSubtreeDiameter));
+        
         return maxDiameter;
     }
 };
