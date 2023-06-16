@@ -14,13 +14,12 @@
 class Solution {
 public:
 
-    int maxDiameter = 0;
-    int maxHeightOfSubtrees( TreeNode* root){
+   int maxHeightOfSubtrees( TreeNode* root, int& maxDiameter){
         if(root==NULL){
             return 0;
         }
-        int heightOfLeftSubtree = maxHeightOfSubtrees(root->left);
-        int heightOfRightSubtree = maxHeightOfSubtrees(root->right);
+        int heightOfLeftSubtree = maxHeightOfSubtrees(root->left,maxDiameter);
+        int heightOfRightSubtree = maxHeightOfSubtrees(root->right,maxDiameter);
 
         if((heightOfLeftSubtree+heightOfRightSubtree)>maxDiameter){
             maxDiameter = heightOfLeftSubtree + heightOfRightSubtree;
@@ -31,7 +30,8 @@ public:
 
     int diameterOfBinaryTree(TreeNode* root) {
 
-        int data = maxHeightOfSubtrees(root);
+        int maxDiameter = 0;
+        int data = maxHeightOfSubtrees(root,maxDiameter);
         return maxDiameter;
     }
 };
