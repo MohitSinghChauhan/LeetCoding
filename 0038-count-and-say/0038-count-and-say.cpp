@@ -11,13 +11,13 @@ public:
         for(int i= 0; i < size-1; i++){
             if(s[i]==s[i+1]) cnt++;
             else{
-                result.push_back('0'+cnt);
+                result+=(to_string(cnt));
                 result.push_back(s[i]);
                 cnt=1;
             }
         }
 
-        result.push_back('0'+cnt);
+        result+=(to_string(cnt));
         result.push_back(s[size-1]);
 
         return result;
