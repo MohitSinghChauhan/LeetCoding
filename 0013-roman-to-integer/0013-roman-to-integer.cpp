@@ -10,13 +10,12 @@ public:
         map['D']=500;
         map['M']=1000;
         
-        int ans = 0;
-        for(int i =0; i<s.size(); i++){
+        int ans = map[s.back()];
+        for(int i =0; i<s.size()-1; i++){
             if(map[s[i]]>=map[s[i+1]]){
                 ans+=map[s[i]];
             }else{
-                ans+=map[s[i+1]]-map[s[i]];
-                i++;
+                ans-=map[s[i]];      
             }
         }
 
