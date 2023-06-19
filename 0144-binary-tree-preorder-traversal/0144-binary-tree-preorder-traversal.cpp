@@ -11,17 +11,33 @@
  */
 class Solution {
 public:
-    vector<int> ans;
     vector<int> preorderTraversal(TreeNode* root) {
-         if(root==NULL){
-            return ans;
-        }
+        vector<int> ans;
+        stack<TreeNode*> s;
+        s.push(root);
 
-        ans.push_back(root->val);
-        preorderTraversal(root->left);
-        preorderTraversal(root->right);
+        while(!s.empty()){
+            TreeNode* curr = s.top();
+            s.pop();
+
+            if(curr){
+                if(curr->right) s.push(curr->right); //bcoz stack is lifo
+                if(curr->left) s.push(curr->left);
+                ans.push_back(curr->val);
+            }
+            
+        }
 
         return ans;
     }
 
 };
+
+
+
+
+
+
+
+
+
