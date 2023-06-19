@@ -19,11 +19,8 @@ public:
         queue<TreeNode*> nodesQueue;
         nodesQueue.push(root);
 
-        while(true){
+        while(!nodesQueue.empty()){
             int nodesInCurrentLevel = nodesQueue.size();
-            if(nodesInCurrentLevel==0){
-                break;
-            }
             vector<int> nodes;
             while(nodesInCurrentLevel--){
                 TreeNode* temp = nodesQueue.front();
