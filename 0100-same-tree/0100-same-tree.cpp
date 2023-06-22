@@ -11,14 +11,26 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* r1, TreeNode* r2) {
-        
-        if(!r1 && !r2) return true;
-        else if (!r1 || !r2) return false;
+    bool isSameTree(TreeNode* r1, TreeNode* r2) { 
+       queue<TreeNode*> q;
+       q.push(r1);
+       q.push(r2);
+// we are pushing null also
+       while(!q.empty()){
+           TreeNode* t1 = q.front();
+           q.pop();
+           TreeNode* t2 = q.front();
+           q.pop();
+           if(!t1 && !t2) continue; //Most Important Point, to skip pushing null elements in queue.
+           if(!t1 || !t2) return false;
+           if(t1->val != t2->val) return false;
 
-        if(r1->val == r2->val && isSameTree(r1->left, r2->left) && isSameTree(r1->right, r2->right)) return true;
-
-        
-        return false;
+           q.push(t1->left);
+           q.push(t2->left);
+           q.push(t1->right);
+           q.push(t2->right);
+       }
+       
+        return true;
     }
 };
