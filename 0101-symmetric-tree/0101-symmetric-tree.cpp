@@ -1,19 +1,30 @@
 class Solution {
 public:
-
-    bool isMirror(TreeNode* r1, TreeNode* r2){
-        
-        if(r1==NULL && r2==NULL) return true;
-        if(r1==NULL || r2==NULL) return false;
-
-        if(r1->val!=r2->val) return false;
-        bool ans = isMirror(r1->left,r2->right) && isMirror(r1->right,r2->left);
-        return ans;
-    }
-
     bool isSymmetric(TreeNode* root) {
         if(root==NULL) return true;
-        return isMirror(root->left, root->right);
+        queue<TreeNode*> nodesQueue;
+        nodesQueue.push(root);
+        nodesQueue.push(root);
+        while(!nodesQueue.empty()){
+            TreeNode* t1 = nodesQueue.front();
+            nodesQueue.pop();
+            TreeNode* t2 = nodesQueue.front();
+            nodesQueue.pop();
+
+            if(!t1 && !t2) continue;
+            if(!t1 || !t2) return false;
+
+            if(t1->val!=t2->val) return false;
+            
+            nodesQueue.push(t1->left);
+            nodesQueue.push(t2->right);
+            nodesQueue.push(t1->right);
+            nodesQueue.push(t2->left);
+
+        }
+
+        return true;
+        
     }
 };
 
