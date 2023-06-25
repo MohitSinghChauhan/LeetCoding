@@ -1,0 +1,22 @@
+class Solution {
+public:
+
+    bool isMirror(TreeNode* r1, TreeNode* r2){
+        
+        if(r1==NULL && r2==NULL) return true;
+        if(r1==NULL || r2==NULL) return false;
+
+        if(r1->val!=r2->val) return false;
+        bool ans = isMirror(r1->left,r2->right) && isMirror(r1->right,r2->left);
+        return ans;
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL) return true;
+        return isMirror(root->left, root->right);
+    }
+};
+
+
+
+
