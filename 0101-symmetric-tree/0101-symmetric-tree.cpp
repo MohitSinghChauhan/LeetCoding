@@ -3,8 +3,12 @@ public:
     bool isSymmetric(TreeNode* root) {
         if(root==NULL) return true;
         queue<TreeNode*> nodesQueue;
-        nodesQueue.push(root);
-        nodesQueue.push(root);
+        
+        if(root->left==NULL && root->right==NULL) return true;
+        if(root->left==NULL || root->right==NULL) return false;
+        nodesQueue.push(root->left);
+        nodesQueue.push(root->right);
+
         while(!nodesQueue.empty()){
             TreeNode* t1 = nodesQueue.front();
             nodesQueue.pop();
