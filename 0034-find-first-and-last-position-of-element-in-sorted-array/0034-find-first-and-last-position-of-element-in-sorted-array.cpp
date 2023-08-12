@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> v;
+        vector<int> result;
         int first=-1,last=-1;
         bool firstFilled=false;
         for(int i=0; i<nums.size(); i++){
@@ -13,8 +13,8 @@ public:
                 last=i;
             }
         }
-        v.push_back(first);
-        v.push_back(last);
-        return v;
+        result.push_back(first);
+        result.push_back(last);
+        return result;
     }
 };
