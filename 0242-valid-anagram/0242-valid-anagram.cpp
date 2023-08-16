@@ -4,16 +4,15 @@ public:
 
         if(s.length()!=t.length()) return false;
 
-        vector<int> freqArr1(27,0);
-        vector<int> freqArr2(27,0);
+        vector<int> freqArr1(26,0);
 
         for(int i=0; i<s.length(); i++){
             freqArr1[s[i]-'a']++;
-            freqArr2[t[i]-'a']++;
         }
 
-        for(int i=0; i<27; i++){
-            if(freqArr1[i]!=freqArr2[i]){
+        for(int i=0; i<s.length(); i++){
+            freqArr1[t[i]-'a']--;
+            if(freqArr1[t[i]-'a']<0){
                 return false;
             }
         }
