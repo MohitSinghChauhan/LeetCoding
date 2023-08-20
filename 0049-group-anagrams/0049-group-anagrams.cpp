@@ -1,27 +1,23 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<string>sortedArr=strs;
-        for(auto& str : sortedArr){
-            sort(str.begin(),str.end());
+        
+        unordered_map<string,vector<string>> map;
+
+        for(auto str : strs){
+            string tempStr = str;
+            sort(tempStr.begin(),tempStr.end());
+            map[tempStr].push_back(str);
         }
 
         vector<vector<string>> result;
 
-        unordered_set<string> isChecked;
-
-        for(int i =0; i<strs.size(); i++){
-            auto itr = isChecked.find(sortedArr[i]);
-            if( itr != isChecked.end()) continue;
-            isChecked.insert(sortedArr[i]);
-            vector<string> tempResult;
-            tempResult.push_back(strs[i]);
-            for(int j=i+1; j<strs.size(); j++ ){
-                if(sortedArr[i]==sortedArr[j]){
-                    tempResult.push_back(strs[j]);
-                }   
+        for(auto i : map){
+            vector<string> temp;
+            for(auto j : i.second){
+                temp.push_back(j);
             }
-            result.push_back(tempResult);
+            result.push_back(temp);
         }
 
         return result;
