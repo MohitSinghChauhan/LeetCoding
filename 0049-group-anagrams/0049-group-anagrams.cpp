@@ -5,9 +5,17 @@ public:
         unordered_map<string,vector<string>> map;
 
         for(auto str : strs){
-            string tempStr = str;
-            sort(tempStr.begin(),tempStr.end());
-            map[tempStr].push_back(str);
+            vector<int> count(26,0);
+            for(auto i : str){
+                count[i-'a']++;
+            }
+            
+            string ans;
+            for(int i=0; i<26; i++){
+                ans+= '#';
+                ans+=to_string(count[i]);
+            }
+            map[ans].push_back(str);
         }
 
         vector<vector<string>> result;
