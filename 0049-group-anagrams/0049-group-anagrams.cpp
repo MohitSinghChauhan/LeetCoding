@@ -13,11 +13,7 @@ public:
         vector<vector<string>> result;
 
         for(auto i : map){
-            vector<string> temp;
-            for(auto j : i.second){
-                temp.push_back(j);
-            }
-            result.push_back(temp);
+            result.push_back(i.second);
         }
 
         return result;
