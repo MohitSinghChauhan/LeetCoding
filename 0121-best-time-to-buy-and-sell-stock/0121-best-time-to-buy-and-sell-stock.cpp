@@ -6,9 +6,9 @@ public:
 
         for(int i=1; i<n; i++){
 
-           if(num<prices[i]){
-               profit = max(profit, prices[i]-num);
-           }
+          
+        profit = max(profit, prices[i]-num);
+           
            num = min(num,prices[i]);
         }
         
