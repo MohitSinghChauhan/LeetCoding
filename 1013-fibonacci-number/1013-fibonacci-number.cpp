@@ -10,11 +10,12 @@ private:
         if(n==0 || n==1)
         return n;
 
-        if(memo.find(n)!=memo.end()){
-            return memo[n];
+        int currentKey = n;
+        if(memo.find(currentKey)!=memo.end()){
+            return memo[currentKey];
         }
         int output = utilFib(n-1, memo)+utilFib(n-2,memo);
-        memo[n]=output;
+        memo[currentKey]=output;
         return output;
     }
 };
