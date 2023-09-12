@@ -7,8 +7,10 @@ public:
     }
 private:
     int calMinCost(int currentStair, vector<int>& cost, unordered_map<int, int>& memo){
-        if(currentStair>=cost.size())
+        if(currentStair==cost.size())
             return 0;
+        else if(currentStair>cost.size())
+            return 1000;
 
         if(memo.find(currentStair)!=memo.end()){
             return memo[currentStair];
