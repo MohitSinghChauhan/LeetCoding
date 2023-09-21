@@ -8,6 +8,7 @@ private:
         if(targetSum==0){
             return true;
         }
+        if(targetSum<0) return false;
 
         if(dp[currentIndex][targetSum] != -1)
             return dp[currentIndex][targetSum];
