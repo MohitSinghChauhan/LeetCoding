@@ -1,30 +1,27 @@
 class Solution {
 
 private:
-    int countTargetSumWays(int currIdx, vector<int>& nums, int target, unordered_map<string, int>& memo){
+   int count_target(vector<int> &nums , int curr_index , int curr_sum , int target)
+   {
+       if(curr_sum == target && curr_index == nums.size())
+         return 1;
+       if(curr_index >= nums.size())
+         return 0;
 
-        if(target == 0 && currIdx==nums.size())
-            return 1;
-        
-        if(currIdx == nums.size())
-            return 0;
+       int plus_sum = count_target(nums , curr_index+1 , curr_sum + nums[curr_index] , target);
+       int subt_sum = count_target(nums , curr_index+1 , curr_sum - nums[curr_index] , target);
 
-        string currentKey = to_string(currIdx)+"-"+to_string(target);
-
-        if(memo.find(currentKey)!=memo.end()){
-            return memo[currentKey];
-        }
-
-        int includeWithPlus = countTargetSumWays(currIdx+1, nums, target-nums[currIdx], memo);
-        int includeWithMinus = countTargetSumWays(currIdx+1, nums, target+nums[currIdx], memo);
-
-        return memo[currentKey] = includeWithPlus + includeWithMinus;
-    }
-
+       return plus_sum + subt_sum;
+   }
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
-        int currIdx = 0;
-        unordered_map<string,int> memo;
-        return countTargetSumWays(currIdx, nums, target, memo);
+        // int currIdx = 0;
+         int n = nums.size();
+    
+        // unordered_map<string,int> memo;
+       
+        // vector<vector<int>> dp(n+1 , vector<int>(target+1 , -1));
+
+        return count_target(nums, 0 , 0 ,  target);
     }
 };
