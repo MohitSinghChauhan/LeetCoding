@@ -17,8 +17,8 @@ private:
     }    
 public:
     int climbStairs(int n) {
-        int currIdx = 0;
-        vector<int> dp(n+1, -1);
+        int currIdx = 0; 
+        vector<int> dp(n+1, -1); // This is n+1 bcoz we are starting from idx 0
         return findStep(0,n,dp);
     }
 };
