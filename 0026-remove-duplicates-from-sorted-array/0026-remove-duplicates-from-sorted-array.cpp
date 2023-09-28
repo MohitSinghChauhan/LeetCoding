@@ -1,16 +1,14 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        //Bruteforce - using set
-        int ans =0;
-        set<int> st;
-        for(int i=0; i<nums.size(); i++){
-            st.insert(nums[i]);
-        }
-        for(auto i : st){
-            nums[ans++]=i;
+        //Optimal Solution - using two pointer
+        int p=0;
+        for(int i=1; i<nums.size(); i++){
+            if(nums[i]!=nums[p]){
+                nums[++p]=nums[i];
+            }
         }
 
-        return ans;
+        return p+1;
     }
 };
