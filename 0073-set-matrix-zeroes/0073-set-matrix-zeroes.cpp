@@ -1,28 +1,27 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-       unordered_set<int> rowsArr, colsArr;
-       int rows = matrix.size(); 
-       for(int i =0; i<rows; i++){
-           for(int j=0; j<matrix[i].size(); j++){
+       int r = matrix.size();
+       int c = matrix[0].size();
+       vector<int> rows(r,1), cols(c,1);
+       
+       for(int i=0; i<r; i++){
+           for(int j=0; j<c; j++){
                if(matrix[i][j]==0){
-                    rowsArr.insert(i);
-                    colsArr.insert(j);
-                }
-            }
-       }
-
-       for(auto i : rowsArr){
-           for(int j=0; j<matrix[i].size(); j++){
-               matrix[i][j] = 0;
+                   rows[i]=0;
+                   cols[j]=0;
+               }
            }
        }
 
-     
-        for(int j=0; j<rows; j++){
-            for(auto i : colsArr){
-               matrix[j][i] = 0;
+        for(int i=0; i<r; i++){
+           for(int j=0; j<c; j++){
+               if(rows[i]==0 || cols[j]==0){
+                    matrix[i][j]=0;
+               }
            }
        }
+
     }
 };
+
