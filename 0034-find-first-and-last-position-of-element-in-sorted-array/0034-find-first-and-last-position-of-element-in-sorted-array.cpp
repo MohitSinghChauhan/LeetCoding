@@ -1,20 +1,19 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> result;
-        int first=-1,last=-1;
-        bool firstFilled=false;
+        vector<int> res(2,-1);
+        bool isFirstFilled = false;
+
         for(int i=0; i<nums.size(); i++){
             if(nums[i]==target){
-                if(!firstFilled){
-                    first=i;
-                    firstFilled=true;
+                if(!isFirstFilled){
+                    res[0] = i;
+                    isFirstFilled = true;
                 }
-                last=i;
+                res[1] = i;
             }
         }
-        result.push_back(first);
-        result.push_back(last);
-        return result;
+
+        return res;
     }
 };
